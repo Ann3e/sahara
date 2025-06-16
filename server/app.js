@@ -18,6 +18,9 @@ app.use(cors());
 app.use(express.json());
 
  dbConnect();
+app.get('/', (req, res) => {
+  res.send('✅ Backend is live');
+});
 // Routes
 app.use('/api/auth', userRoutes);
 app.use('/api/dsa', dsaRoutes);
