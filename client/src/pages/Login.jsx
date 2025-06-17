@@ -31,7 +31,7 @@ const Login = () => {
     alert('Please fill all required fields');
     return;}
 
-    const url= "http://localhost:8080/api/auth/login";
+    const url= "https://sahara-backend-6fn6.onrender.com/api/auth/login";
     
     try {
       const payload ={ email, password };
