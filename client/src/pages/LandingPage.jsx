@@ -35,25 +35,21 @@ const review = saharaReviews[0]; // Just the first one
 
  const features = [
     {
-    //   icon: <Target className="w-6 h-6" />,
       title: "DSA Question Tracker",
       desc: "Track your progress through data structures and algorithms problems with smart categorization and progress visualization.",
       badge: "Core Feature"
     },
     {
-    //   icon: <Mic className="w-6 h-6" />,
       title: "Voice & Text Notes",
       desc: "Record voice explanations or write detailed notes for each problem you solve. Never forget your approach again.",
       badge: "Voice Enabled"
     },
     {
-    //   icon: <Brain className="w-6 h-6" />,
       title: "AI-Powered Interview Practice",
       desc: "Practice behavioral interviews with AI feedback on leadership, teamwork, and problem-solving scenarios.",
       badge: "AI Powered"
     },
     {
-    //   icon: <BarChart3 className="w-6 h-6" />,
       title: "Smart Analytics",
       desc: "Get insights into your practice patterns, strengths, and areas for improvement with detailed analytics.",
       badge: "Analytics"
@@ -68,10 +64,11 @@ const LandingPage = () => {
         
 <nav className="bg-white fixed w-full z-20 top-0 start-0 border-b border-gray-200">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          {/* <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" /> */}
+        <Link to="/">
+        <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-orange-600">sahara</span>
         </a>
+        </Link>
 
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <Link to="/login">
@@ -248,7 +245,6 @@ const LandingPage = () => {
     <div class="w-full max-w-screen-xl mx-auto md:py-8">
         <div class="sm:flex sm:items-center sm:justify-between">
             <a href="https://flowbite.com/" class="flex items-center  sm:mb-0 space-x-3 rtl:space-x-reverse">
-                {/* <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" /> */}
                 <span class="self-center text-2xl font-semibold whitespace-nowrap text-orange-600">sahara</span>
             </a>
             <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
@@ -267,7 +263,6 @@ const LandingPage = () => {
             </ul>
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-      {/* <span class="self-center text-2xl font-semibold whitespace-nowrap text-orange-600">sahara</span> */}
     </div>
 </footer>
 

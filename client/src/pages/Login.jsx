@@ -18,7 +18,6 @@ const Login = () => {
   // This connects the inputs to formData:
   const handleChange=(e)=>{
     const {name,value}=e.target;
-    console.log(name,value);
     const copyformData ={...formData};//Makes a shallow copy of the current state object formData.
     copyformData[name]=value;
     setFormData(copyformData)
@@ -58,8 +57,6 @@ const Login = () => {
     } else if (!success) {
                 handleError(message);
             }
-
-    console.log(data)
 
     // Clear form or redirect here
   } catch (error) {

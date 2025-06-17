@@ -24,7 +24,6 @@ const VoiceExplanations = () => {
       const blob = new Blob(chunksRef.current, { type: 'audio/webm' });
       chunksRef.current = [];
 
-      // 👇 Upload to Cloudinary here
       const cloudinaryUrl = await uploadToCloudinary(blob);
       console.log("Uploaded URL:", cloudinaryUrl);
 
@@ -56,7 +55,6 @@ const VoiceExplanations = () => {
     }
   };
 
-  // ⬇️ Cloudinary Upload Function (You put this inside the component file)
   const uploadToCloudinary = async (blob) => {
     const sigRes = await api.get("/api/cloudinary-signature");
         console.log(sigRes.data)
@@ -86,15 +84,13 @@ const VoiceExplanations = () => {
       const res = await api.get(`/api/dsa/questions/${questionId}`);
 
       const { voiceNoteUrl } = res.data.ques;
-        // console.log(res.data)
 
       if (voiceNoteUrl) {
-                console.log("yess")
 
         setRecordings([{
           url: voiceNoteUrl,
-          time: new Date(), // optional placeholder
-          size: 'Existing file' // no size info, just a label
+          time: new Date(),
+          size: 'Existing file' 
         }]);
       }
     } catch (err) {

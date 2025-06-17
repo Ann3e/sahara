@@ -40,13 +40,6 @@ const Home = () => {
               </div>
             </Link>
 
-            {/* Optional: Profile / Settings card */}
-            {/* <Link to="/profile">
-              <div className="bg-white p-6 rounded-2xl shadow hover:shadow-md transition border-t-4 border-purple-600">
-                <h2 className="text-xl font-semibold text-purple-700 mb-2">👤 My Profile</h2>
-                <p className="text-gray-600">View or edit your preferences and stats.</p>
-              </div>
-            </Link> */}
           </div>
         </div>
       </div>
