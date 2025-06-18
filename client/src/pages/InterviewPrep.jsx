@@ -8,7 +8,10 @@ const InterviewPrep = () => {
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const [questionLoading, setQuestionLoading] = useState(false);
+  const [feedbackLoading, setFeedbackLoading] = useState(false);
+
 
   const [recognizing, setRecognizing] = useState(false);
   const recognitionRef = useRef(null);
@@ -50,7 +53,7 @@ const InterviewPrep = () => {
     setQuestion('');
     setAnswer('');
     setFeedback('');
-
+    setQuestionLoading(true);
     try {
       const res = await api.post('/api/ai/generate-questions', {
         topicsToFocus: topic,
@@ -67,12 +70,14 @@ const InterviewPrep = () => {
       console.error('Failed to fetch question:', err);
       setQuestion(`💬 Describe a challenging problem related to ${topic}.`);
     }
+      setQuestionLoading(false);
+
   };
 
   // Submit answer for feedback using Gemini
   const handleSubmit = async () => {
     if (!question || !answer) return;
-    setLoading(true);
+    setFeedbackLoading(true);
     setFeedback('');
 
     try {
@@ -87,7 +92,7 @@ const InterviewPrep = () => {
       setFeedback('❌ Failed to get feedback.');
     }
 
-    setLoading(false);
+    setFeedbackLoading(false);
   };
 
   // Toggle voice recognition
@@ -112,9 +117,10 @@ const InterviewPrep = () => {
             <button
               onClick={handleGenerateQuestion}
               className="flex items-center gap-2 text-sm bg-yellow-500 text-white px-4 py-2 rounded-lg shadow hover:bg-yellow-600 transition"
+              disabled={questionLoading}
             >
               <RefreshCcw size={16} />
-              New Question
+              {questionLoading ? 'Generating...' : 'New Question'}
             </button>
           </div>
 
@@ -153,13 +159,13 @@ const InterviewPrep = () => {
 
                 <button
                   onClick={handleSubmit}
-                  disabled={loading}
+                  disabled={feedbackLoading}
                   className={`flex items-center gap-2 text-sm text-white px-4 py-2 rounded-lg transition ${
-                    loading ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'
+                    feedbackLoading ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'
                   }`}
                 >
                   <Send size={16} />
-                  {loading ? 'Analyzing...' : 'Submit Answer'}
+                  {feedbackLoading ? 'Analyzing...' : 'Submit Answer'}
                 </button>
               </div>
             </div>
