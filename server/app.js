@@ -6,10 +6,10 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const dsaRoutes = require('./routes/dsaRoutes');
 const dbConnect = require('./config/db');
-const DsaQues = require('./models/DSAques'); // ✅ Adjust path as needed
+const DsaQues = require('./models/DSAques'); 
 const cloudinaryRoutes = require('./routes/cloudinary');
 const protect = require('./middlewares/protect');
-
+const {generateInterviewQuestions,generateFeedback}= require('./controllers/aiController')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -21,14 +21,17 @@ app.use(cors({
 
  dbConnect();
 app.get('/', (req, res) => {
-  res.send('✅ Backend is live');
+  res.send('Backend is live');
 });
+
 // Routes
 app.use('/api/auth', userRoutes);
 app.use('/api/dsa', dsaRoutes);
 app.use('/api', cloudinaryRoutes);
-// app.use('/api/ai/generate-questions',protect,generateInterviewQuestions);
-// app.use('/api/ai/generate-feedback',protect,generateFeedback);
+
+
+app.use('/api/ai/generate-questions',protect,generateInterviewQuestions);
+app.use('/api/ai/generate-feedback',protect,generateFeedback);
 
 
     app.listen(PORT, () => {
