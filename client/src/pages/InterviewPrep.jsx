@@ -142,7 +142,7 @@ const InterviewPrep = () => {
     setFeedback('');
 
     try {
-      const res = await api.post('/api/ai/feedback', {
+      const res = await api.post('/api/ai/generate-feedback', {
         question,
         answer
       });
